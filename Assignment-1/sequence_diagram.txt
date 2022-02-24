@@ -1,0 +1,28 @@
+@startuml
+actor Employee as emp
+participant       "Login Page" as lgpage
+participant    Firebase    as fbase
+participant    "Home Page" as hpage
+participant    Calendar      as cal
+participant    Profile    as profile
+participant    Mail as mail
+actor Admin as adm
+
+emp -> lgpage : Login
+emp -> fbase : Update Password
+lgpage -> fbase : Verify Details
+fbase --> lgpage : Invalid
+fbase -> hpage : Valid
+fbase -> hpage : Percentage and Leave Details
+hpage -> hpage : Select Month
+fbase -> cal : Daily Attendance Details
+fbase -> profile : Personal Details
+cal -> cal : Select Date
+cal -> adm : Report (mail sent to admin)
+profile -> profile : Enable Notifications
+profile -> fbase : Update enable choice
+profile --> emp : Sign Out
+profile -> mail : Change Password
+mail -> emp : Mail to change password
+
+@enduml

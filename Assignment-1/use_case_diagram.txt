@@ -1,0 +1,26 @@
+@startuml
+left to right direction
+actor "Employee" as emp
+actor "Organisation" as orgsn
+rectangle "Attendance App"{
+  usecase "Login" as UC1
+  usecase "Tabs" as UC2
+  usecase "Verify Password" as UC3
+  usecase "Display Error" as UC4
+
+  together {
+  (Home) as UC5
+  (Profile) as UC6
+  (Calendar) as UC7
+  }
+}
+emp -- UC1
+emp -- UC2
+UC1 ..> UC3
+UC1 <- UC4 : extends
+UC2 -- orgsn
+UC2 -down-> UC5
+UC2 --> UC6
+UC2 --> UC7
+
+@enduml
